@@ -111,8 +111,8 @@ public class Note {
         return address;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddress(int index, String city, String street, int houseNumber, int flatNumber) {
+        this.address = new Address(index, city, street, houseNumber, flatNumber);
     }
 
     public ArrayList<DateFormat> getModifyingDates() {

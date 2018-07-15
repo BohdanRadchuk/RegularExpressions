@@ -2,6 +2,7 @@ package controller;
 
 import controller.util.CheckRegex;
 import model.NoteBook;
+import model.entity.Group;
 import model.entity.Note;
 import view.View;
 
@@ -30,20 +31,41 @@ public class Controller {
     public void createNewNote() {
         getUSBundleData();
 
-        //setName(resourceBundle.getString("capitalizedStringRegex"));
-        /*setSurname (resourceBundle.getString("capitalizedStringRegex"));
-        setPatronymic (resourceBundle.getString("capitalizedStringRegex"));*/
-        //setNickname (resourceBundle.getString("exceptWhiteSpaces"));
-        //setComment (resourceBundle.getString("allSymbols"));
-        //setGroup (resourceBundle.getString(""));
-        //setHomePhone (resourceBundle.getString("homePhone"));
-        //setMobilePhone(resourceBundle.getString("mobilePhone"));
-        //setSecondMobilePhone(resourceBundle.getString("secondMobilePhone"));
-        //setEmail(resourceBundle.getString("email"));
-        setSkype(resourceBundle.getString("allSymbols"));
-        //setAddress()
+//        setName(resourceBundle.getString("capitalizedString"));
+//        setSurname (resourceBundle.getString("capitalizedString"));
+//        setPatronymic (resourceBundle.getString("capitalizedString"));
+//        setNickname (resourceBundle.getString("exceptWhiteSpaces"));
+//        setComment (resourceBundle.getString("allSymbols"));
+          setGroup (resourceBundle.getString("enumWords"));
+//        setHomePhone (resourceBundle.getString("homePhone"));
+//        setMobilePhone(resourceBundle.getString("mobilePhone"));
+//        setSecondMobilePhone(resourceBundle.getString("secondMobilePhone"));
+//        setEmail(resourceBundle.getString("email"));
+//        setSkype(resourceBundle.getString("allSymbols"));
+//        setAddress();
 
         System.out.println(note);
+    }
+
+    private void setGroup(String enumWordsRegex) {      //TODO
+        String asd = getCorrectString(enumWordsRegex);
+        if (asd.equals(Group.FRIENDS)){
+            note.setGroup(Group.valueOf(asd));
+            System.out.println(asd);
+        } else if (asd.equals(Group.COWORKERS)){
+            System.out.println(asd);
+        } else if (asd.equals(Group.FAMILY)){
+            System.out.println(asd);
+        }
+    }
+
+    private void setAddress() {
+        int index = Integer.valueOf(getCorrectString(resourceBundle.getString("allNumbers")));
+        String city = getCorrectString(resourceBundle.getString("capitalizedString"));
+        String street = getCorrectString(resourceBundle.getString("capitalizedString"));
+        int houseNumber = Integer.valueOf(getCorrectString(resourceBundle.getString("allNumbers")));
+        int flatNumber = Integer.valueOf(getCorrectString(resourceBundle.getString("allNumbers")));
+        note.setAddress(index, city, street, houseNumber, flatNumber);
     }
 
     private void setSkype(String allSymbolsRegex) {
