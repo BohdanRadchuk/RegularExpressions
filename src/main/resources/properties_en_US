@@ -1,4 +1,0 @@
-inputDataRequest = Please, enter your data
-wrongInput = You've entered wrong data, try once more
-
-simpleStringRegex = [A-Za-z]
