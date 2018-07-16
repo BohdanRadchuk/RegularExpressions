@@ -33,8 +33,8 @@ public class Controller {
     }
 
     private static void getUSBundleData() {
-        Locale.setDefault(Locale.US);
-        //Locale.setDefault(new Locale("ru", "RU"));
+        //Locale.setDefault(Locale.US);
+        Locale.setDefault(new Locale("ru", "RU"));
         resourceBundle = ResourceBundle.getBundle(View.PROPERTY_FILE_NAME, Locale.getDefault());
     }
 }
