@@ -14,7 +14,6 @@ public class Controller {
     private View view;
     public static ResourceBundle resourceBundle;
     private FieldsFilling fieldsFilling;
-    // private CheckRegex checkRegex = new CheckRegex();
 
     public static Scanner scanner = new Scanner(System.in);
 
@@ -27,17 +26,15 @@ public class Controller {
 
     public void createNewNote() {
         getUSBundleData();
-        note = fieldsFilling.createNewNote();
-        noteBook.addNote(note);
 
-        System.out.println(note);
-        System.out.println(noteBook);
+        noteBook.addNote(fieldsFilling.createNewNote());
+
+        view.printMessage(noteBook.toString());
     }
 
     private static void getUSBundleData() {
-        System.out.println(Locale.getDefault());
         Locale.setDefault(Locale.US);
-        System.out.println(Locale.getDefault());
-        resourceBundle = ResourceBundle.getBundle("constants", Locale.getDefault());
+        //Locale.setDefault(new Locale("ru", "RU"));
+        resourceBundle = ResourceBundle.getBundle(View.PROPERTY_FILE_NAME, Locale.getDefault());
     }
 }
