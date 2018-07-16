@@ -1,7 +1,7 @@
 package model.entity;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 public class Note {
@@ -15,9 +15,9 @@ public class Note {
     private String mobilePhone;
     private Optional<String> secondMobilePhone;
     private String email;
-    private String Skype;
+    private String skype;
     private Address address;
-    private ArrayList<DateFormat> ModifyingDates;
+    private ArrayList<Date> modifyingDates = new ArrayList<>();
 
     public String getSurname() {
         return surname;
@@ -100,11 +100,11 @@ public class Note {
     }
 
     public String getSkype() {
-        return Skype;
+        return skype;
     }
 
     public void setSkype(String skype) {
-        Skype = skype;
+        this.skype = skype;
     }
 
     public Address getAddress() {
@@ -115,12 +115,12 @@ public class Note {
         this.address = new Address(index, city, street, houseNumber, flatNumber);
     }
 
-    public ArrayList<DateFormat> getModifyingDates() {
-        return ModifyingDates;
+    public ArrayList<Date> getModifyingDates() {
+        return modifyingDates;
     }
 
-    public void setModifyingDates(ArrayList<DateFormat> modifyingDates) {
-        ModifyingDates = modifyingDates;
+    public void addModifyingDates(Date date) {
+        modifyingDates.add(date);
     }
 
     @Override
@@ -136,9 +136,9 @@ public class Note {
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", secondMobilePhone=" + secondMobilePhone +
                 ", email='" + email + '\'' +
-                ", Skype='" + Skype + '\'' +
+                ", skype='" + skype + '\'' +
                 ", address=" + address +
-                ", ModifyingDates=" + ModifyingDates +
+                ", ModifyingDates=" + modifyingDates +
                 '}';
     }
 }
