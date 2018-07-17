@@ -8,11 +8,11 @@ import view.View;
 
 import java.util.*;
 
-public class FieldsFilling {
+public class NoteCreation {
     private Note note;
     private View view;
 
-    public FieldsFilling(View view) {
+    public NoteCreation(View view) {
         this.view = view;
     }
 

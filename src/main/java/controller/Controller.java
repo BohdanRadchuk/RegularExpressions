@@ -13,7 +13,7 @@ public class Controller {
     private Note note;
     private View view;
     public static ResourceBundle resourceBundle;
-    private FieldsFilling fieldsFilling;
+    private NoteCreation noteCreation;
 
     public static Scanner scanner = new Scanner(System.in);
 
@@ -21,13 +21,13 @@ public class Controller {
         this.view = view;
         this.noteBook = noteBook;
         this.note = new Note();
-        this.fieldsFilling = new FieldsFilling(view);
+        this.noteCreation = new NoteCreation(view);
     }
 
     public void createNewNote() {
         getUSBundleData();
 
-        noteBook.addNote(fieldsFilling.createNewNote());
+        noteBook.addNote(noteCreation.createNewNote());
 
         view.printMessage(noteBook.toString());
     }
