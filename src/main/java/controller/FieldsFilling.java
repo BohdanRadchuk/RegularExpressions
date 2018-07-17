@@ -18,20 +18,20 @@ public class FieldsFilling {
 
     public Note createNewNote() {
         note = new Note();
-        setName(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED));
-        setSurname(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED));
-        setPatronymic(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED));
+        setName(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
+        setSurname(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
+        setPatronymic(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
         note.generateSurnameAndInitial();
-        setNickname(Controller.resourceBundle.getString(PropertyNames.NO_SPACES));
-        setComment(Controller.resourceBundle.getString(PropertyNames.ALL_SYMBOLS));
-        setGroup(Controller.resourceBundle.getString(PropertyNames.ENUM_WORDS));
-        setHomePhone(Controller.resourceBundle.getString(PropertyNames.HOME_PHONE));
-        setMobilePhone(Controller.resourceBundle.getString(PropertyNames.MOBILE_PHONE));
-        setSecondMobilePhone(Controller.resourceBundle.getString(PropertyNames.SECOND_MOBILE_PHONE));
-        setEmail(Controller.resourceBundle.getString(PropertyNames.EMAIL));
-        setSkype(Controller.resourceBundle.getString(PropertyNames.NO_SPACES));
-        setAddress(Controller.resourceBundle.getString(PropertyNames.ALL_NUMBERS),
-                Controller.resourceBundle.getString(PropertyNames.CAPITALIZED));
+        setNickname(Controller.resourceBundle.getString(PropertyNames.NO_SPACES_REGEX));
+        setComment(Controller.resourceBundle.getString(PropertyNames.ALL_SYMBOLS_REGEX));
+        setGroup(Controller.resourceBundle.getString(PropertyNames.ENUM_WORDS_REGEX));
+        setHomePhone(Controller.resourceBundle.getString(PropertyNames.HOME_PHONE_REGEX));
+        setMobilePhone(Controller.resourceBundle.getString(PropertyNames.MOBILE_PHONE_REGEX));
+        setSecondMobilePhone(Controller.resourceBundle.getString(PropertyNames.SECOND_MOBILE_PHONE_REGEX));
+        setEmail(Controller.resourceBundle.getString(PropertyNames.EMAIL_REGEX));
+        setSkype(Controller.resourceBundle.getString(PropertyNames.NO_SPACES_REGEX));
+        setAddress(Controller.resourceBundle.getString(PropertyNames.ALL_NUMBERS_REGEX),
+                Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
         note.addModifyingDates(new Date());
         return note;
     }
@@ -70,8 +70,12 @@ public class FieldsFilling {
     }
 
     private void setSecondMobilePhone(String secondMobileRegex) {
-        Optional<String> mobilePhone = Optional.of(getCorrectString(secondMobileRegex,
-                PropertyNames.SECOND_MOBILE_PHONE_MESSAGE));
+        Optional<String> mobilePhone = Optional.empty();
+        String input = getCorrectString(secondMobileRegex, PropertyNames.SECOND_MOBILE_PHONE_MESSAGE).toLowerCase();
+        if (CheckRegex.checkRegexToInput(
+                Controller.resourceBundle.getString(PropertyNames.MOBILE_PHONE_REGEX), input)) {
+            mobilePhone = Optional.of(input);
+        }
         note.setSecondMobilePhone(mobilePhone);
     }
 
@@ -105,7 +109,7 @@ public class FieldsFilling {
             view.printMessage(Controller.resourceBundle.getString(PropertyNames.INPUT_DATA_REQUEST) +
                     Controller.resourceBundle.getString(requirementsMessage));
             input = Controller.scanner.nextLine();
-            checkResult = CheckRegex.checkInputToRegex(regex, input);
+            checkResult = CheckRegex.checkRegexToInput(regex, input);
             if (!checkResult) {
                 view.printMessage(Controller.resourceBundle.getString(PropertyNames.WRONG_INPUT));
             }

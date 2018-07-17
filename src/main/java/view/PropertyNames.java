@@ -4,15 +4,15 @@ public interface PropertyNames {
     String INPUT_DATA_REQUEST = "inputDataRequest";
     String WRONG_INPUT = "wrongInput";
 
-    String CAPITALIZED = "capitalizedString";
-    String NO_SPACES = "exceptWhiteSpaces";
-    String ALL_SYMBOLS = "allSymbols";
-    String ALL_NUMBERS = "allNumbers";
-    String HOME_PHONE = "homePhone";
-    String MOBILE_PHONE = "mobilePhone";
-    String SECOND_MOBILE_PHONE = "secondMobilePhone";
-    String EMAIL = "email";
-    String ENUM_WORDS = "enumWords";
+    String CAPITALIZED_REGEX = "capitalizedString";
+    String NO_SPACES_REGEX = "exceptWhiteSpaces";
+    String ALL_SYMBOLS_REGEX = "allSymbols";
+    String ALL_NUMBERS_REGEX = "allNumbers";
+    String HOME_PHONE_REGEX = "homePhone";
+    String MOBILE_PHONE_REGEX = "mobilePhone";
+    String SECOND_MOBILE_PHONE_REGEX = "secondMobilePhone";
+    String EMAIL_REGEX = "email";
+    String ENUM_WORDS_REGEX = "enumWords";
 
     String SURNAME_MESSAGE = "surnameRequirements";
     String NAME_MESSAGE = "nameRequirements";
