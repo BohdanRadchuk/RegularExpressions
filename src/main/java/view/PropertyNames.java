@@ -3,6 +3,7 @@ package view;
 public interface PropertyNames {
     String INPUT_DATA_REQUEST = "inputDataRequest";
     String WRONG_INPUT = "wrongInput";
+    String LOGIN_EXISTS = "loginExists";
 
     String CAPITALIZED_REGEX = "capitalizedString";
     String NO_SPACES_REGEX = "exceptWhiteSpaces";

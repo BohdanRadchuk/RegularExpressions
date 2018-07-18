@@ -8,11 +8,11 @@ import view.View;
 
 import java.util.*;
 
-public class NoteCreation {
+public class NoteWork {
     private Note note;
     private View view;
 
-    public NoteCreation(View view) {
+    public NoteWork(View view) {
         this.view = view;
     }
 
@@ -22,7 +22,7 @@ public class NoteCreation {
         setSurname(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
         setPatronymic(Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
         note.generateSurnameAndInitial();
-        setNickname(Controller.resourceBundle.getString(PropertyNames.NO_SPACES_REGEX));
+        setNickname(Controller.resourceBundle.getString(PropertyNames.NO_SPACES_REGEX), note);
         setComment(Controller.resourceBundle.getString(PropertyNames.ALL_SYMBOLS_REGEX));
         setGroup(Controller.resourceBundle.getString(PropertyNames.ENUM_WORDS_REGEX));
         setHomePhone(Controller.resourceBundle.getString(PropertyNames.HOME_PHONE_REGEX));
@@ -33,6 +33,10 @@ public class NoteCreation {
         setAddress(Controller.resourceBundle.getString(PropertyNames.ALL_NUMBERS_REGEX),
                 Controller.resourceBundle.getString(PropertyNames.CAPITALIZED_REGEX));
         note.addModifyingDates(new Date());
+        return note;
+    }
+    public Note editNoteNickname (Note note){
+        setNickname(Controller.resourceBundle.getString(PropertyNames.NO_SPACES_REGEX), note);
         return note;
     }
 
@@ -48,7 +52,7 @@ public class NoteCreation {
         note.setPatronymic(getCorrectString(capitalizedStringRegex, PropertyNames.PATRONYMIC_MESSAGE));
     }
 
-    private void setNickname(String exceptWhiteSpacesRegex) {
+    private void setNickname(String exceptWhiteSpacesRegex, Note note) {
         note.setNickname(getCorrectString(exceptWhiteSpacesRegex, PropertyNames.NICKNAME_MESSAGE));
     }
 

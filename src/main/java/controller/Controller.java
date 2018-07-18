@@ -2,6 +2,7 @@ package controller;
 
 import model.NoteBook;
 import model.entity.Note;
+import view.PropertyNames;
 import view.View;
 
 import java.util.Locale;
@@ -13,7 +14,7 @@ public class Controller {
     private Note note;
     private View view;
     public static ResourceBundle resourceBundle;
-    private NoteCreation noteCreation;
+    private NoteWork noteWork;
 
     public static Scanner scanner = new Scanner(System.in);
 
@@ -21,16 +22,33 @@ public class Controller {
         this.view = view;
         this.noteBook = noteBook;
         this.note = new Note();
-        this.noteCreation = new NoteCreation(view);
+        this.noteWork = new NoteWork(view);
+        getUSBundleData();
     }
+
 
     public void createNewNote() {
-        getUSBundleData();
 
-        noteBook.addNote(noteCreation.createNewNote());
-
+        for (int i = 0; i < 3; i++) {
+            note = noteWork.createNewNote();
+            while (!checkLogin(note));
+            noteBook.addNote(note);
+        }
         view.printMessage(noteBook.toString());
     }
+
+    private boolean checkLogin(Note note) {
+        try {
+            noteBook.checkLoginInNotebook(note);
+            return true;
+        } catch (LoginMatchException e) {
+            view.printMessage(resourceBundle.getString(PropertyNames.LOGIN_EXISTS));
+            e.printStackTrace();
+            noteWork.editNoteNickname(note);
+            return false;
+        }
+    }
+
 
     private static void getUSBundleData() {
         Locale.setDefault(Locale.US);
